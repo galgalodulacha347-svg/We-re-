@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>Galgalo Dulacha Dabaso | IT Portfolio</title>
+  <!-- Google Fonts + Font Awesome CDN -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #f8fafc;
+      color: #0f172a;
+      line-height: 1.5;
+      scroll-behavior: smooth;
+    }
+
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #e2e8f0;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #3b82f6;
+      border-radius: 12px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Header / Nav */
+    header {
+      background: rgba(255,255,255,0.96);
+      backdrop-filter: blur(2px);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+      border-bottom: 1px solid #eef2ff;
+    }
+    .nav-bar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 0;
+    }
+    .logo {
+      font-size: 1.6rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #1e3c72, #2b4c7c);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      letter-spacing: -0.3px;
+    }
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+    .nav-links a {
+      text-decoration: none;
+      font-weight: 600;
+      color: #1e293b;
+      transition: 0.2s;
+      font-size: 0.95rem;
+    }
+    .nav-links a:hover {
+      color: #3b82f6;
+    }
+    .mobile-menu {
+      display: none;
+      font-size: 1.6rem;
+      cursor: pointer;
+    }
+
+    /* Buttons & common */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #3b82f6;
+      color: white;
+      padding: 10px 24px;
+      border-radius: 40px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.25s;
+      border: none;
+      cursor: pointer;
+      font-size: 0.9rem;
+    }
+    .btn-outline {
+      background: transparent;
+      border: 2px solid #3b82f6;
+      color: #3b82f6;
+    }
+    .btn-outline:hover {
+      background: #3b82f6;
+      color: white;
+    }
+    .btn:hover {
+      background: #2563eb;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px -5px rgba(59,130,246,0.3);
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 70px 0 60px;
+    }
+    .hero-grid {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+    }
+    .hero-content {
+      flex: 1;
+    }
+    .hero-badge {
+      background: #e0f2fe;
+      color: #0369a1;
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 30px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+    .hero-content h1 {
+      font-size: 3.2rem;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 20px;
+      background: linear-gradient(to right, #0f172a, #1e293b);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .hero-content p {
+      font-size: 1.1rem;
+      color: #334155;
+      max-width: 550px;
+      margin-bottom: 28px;
+    }
+    .hero-buttons {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .hero-image {
+      flex: 0.8;
+      background: linear-gradient(145deg, #d9e6f7, #ffffff);
+      border-radius: 50% 30% 50% 30% / 40% 50% 40% 50%;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 20px 35px -12px rgba(0,0,0,0.1);
+    }
+    .hero-image i {
+      font-size: 10rem;
+      color: #2c5f8a;
+      filter: drop-shadow(2px 6px 12px rgba(0,0,0,0.1));
+    }
+
+    /* Section style */
+    section {
+      padding: 70px 0;
+    }
+    .section-title {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 40px;
+      position: relative;
+      display: inline-block;
+    }
+    .section-title:after {
+      content: '';
+      position: absolute;
+      bottom: -12px;
+      left: 0;
+      width: 60px;
+      height: 4px;
+      background: #3b82f6;
+      border-radius: 4px;
+    }
+
+    /* About */
+    .about-card {
+      background: white;
+      padding: 32px;
+      border-radius: 28px;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.05);
+      border: 1px solid #eef2ff;
+    }
+    .about-text {
+      font-size: 1.05rem;
+      color: #1e293b;
+      margin-bottom: 24px;
+      line-height: 1.6;
+    }
+    .info-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      margin-top: 24px;
+    }
+    .info-item {
+      background: #f1f5f9;
+      padding: 10px 20px;
+      border-radius: 40px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .info-item i {
+      color: #3b82f6;
+      width: 24px;
+    }
+
+    /* Skills */
+    .skills-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      justify-content: center;
+    }
+    .skill-chip {
+      background: white;
+      padding: 12px 28px;
+      border-radius: 100px;
+      font-weight: 600;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+      border: 1px solid #e2e8f0;
+      transition: all 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .skill-chip i {
+      color: #3b82f6;
+      font-size: 1.1rem;
+    }
+    .skill-chip:hover {
+      border-color: #3b82f6;
+      transform: translateY(-3px);
+    }
+
+    /* Projects */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 32px;
+      margin-top: 20px;
+    }
+    .project-card {
+      background: white;
+      border-radius: 28px;
+      overflow: hidden;
+      transition: 0.25s ease;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+      border: 1px solid #eef2ff;
+    }
+    .project-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 30px -12px rgba(0,0,0,0.15);
+    }
+    .project-icon {
+      background: #eef2ff;
+      padding: 28px 0;
+      text-align: center;
+      font-size: 2.5rem;
+      color: #2563eb;
+    }
+    .project-info {
+      padding: 24px;
+    }
+    .project-info h3 {
+      font-size: 1.35rem;
+      margin-bottom: 12px;
+    }
+    .project-info p {
+      color: #475569;
+      margin-bottom: 18px;
+    }
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+    .project-tags span {
+      background: #f1f5f9;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.7rem;
+      font-weight: 600;
+    }
+
+    /* Contact & socials */
+    .contact-flex {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      justify-content: space-between;
+      background: white;
+      border-radius: 36px;
+      padding: 40px;
+      box-shadow: 0 20px 35px -10px rgba(0,0,0,0.05);
+    }
+    .contact-left {
+      flex: 1.2;
+    }
+    .contact-left h3 {
+      font-size: 1.6rem;
+      margin-bottom: 16px;
+    }
+    .contact-details {
+      margin: 28px 0;
+    }
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 20px;
+      font-size: 1rem;
+      word-break: break-all;
+    }
+    .contact-item i {
+      width: 32px;
+      font-size: 1.4rem;
+      color: #3b82f6;
+    }
+    .social-links {
+      display: flex;
+      gap: 24px;
+      margin-top: 32px;
+    }
+    .social-links a {
+      background: #eef2ff;
+      width: 48px;
+      height: 48px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      color: #1e293b;
+      font-size: 1.5rem;
+      transition: 0.2s;
+    }
+    .social-links a:hover {
+      background: #3b82f6;
+      color: white;
+      transform: translateY(-4px);
+    }
+    .contact-right {
+      flex: 1;
+      background: #f8fafc;
+      border-radius: 28px;
+      padding: 28px;
+    }
+    .contact-right form {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+    .contact-right input, .contact-right textarea {
+      padding: 14px 18px;
+      border: 1px solid #cbd5e1;
+      border-radius: 40px;
+      font-family: inherit;
+      font-size: 0.9rem;
+      background: white;
+      transition: 0.2s;
+    }
+    .contact-right textarea {
+      border-radius: 24px;
+      resize: vertical;
+    }
+    .contact-right input:focus, .contact-right textarea:focus {
+      outline: none;
+      border-color: #3b82f6;
+      box-shadow: 0 0 0 3px rgba(59,130,246,0.2);
+    }
+    .submit-msg {
+      margin-top: 8px;
+      font-size: 0.8rem;
+      color: green;
+    }
+
+    footer {
+      background: #0f172a;
+      color: #cbd5e1;
+      text-align: center;
+      padding: 32px 0;
+      margin-top: 20px;
+    }
+
+    @media (max-width: 780px) {
+      .nav-links {
+        display: none;
+      }
+      .mobile-menu {
+        display: block;
+      }
+      .hero-content h1 {
+        font-size: 2.4rem;
+      }
+      .hero-image i {
+        font-size: 6rem;
+      }
+      .contact-flex {
+        flex-direction: column;
+      }
+      .section-title {
+        font-size: 1.7rem;
+      }
+      .container {
+        padding: 0 20px;
+      }
+    }
+
+    /* mobile nav active */
+    .nav-links.active {
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      top: 70px;
+      left: 0;
+      width: 100%;
+      background: white;
+      padding: 28px;
+      gap: 1.8rem;
+      box-shadow: 0 20px 25px -5px rgba(0,0,0,0.05);
+      border-bottom: 1px solid #e2e8f0;
+      z-index: 100;
+    }
+  </style>
+</head>
+<body>
+<header>
+  <div class="container">
+    <div class="nav-bar">
+      <div class="logo">Galgalo.dev</div>
+      <div class="mobile-menu" id="mobileMenuBtn">
+        <i class="fas fa-bars"></i>
+      </div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <div class="container hero-grid">
+      <div class="hero-content">
+        <div class="hero-badge">🚀 First-year IT Student @ Haramaya University</div>
+        <h1>Galgalo Dulacha <span style="color:#3b82f6;">Dabaso</span></h1>
+        <p>Passionate about building digital solutions, web technologies, and creative problem-solving. Based in Yabelo, Oromia, Ethiopia.</p>
+        <div class="hero-buttons">
+          <a href="#contact" class="btn"><i class="fas fa-paper-plane"></i> Hire Me</a>
+          <a href="#projects" class="btn btn-outline"><i class="fas fa-code-branch"></i> View Work</a>
+        </div>
+      </div>
+      <div class="hero-image">
+        <i class="fas fa-laptop-code"></i>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about">
+    <div class="container">
+      <div class="about-card">
+        <h2 class="section-title">About Me</h2>
+        <div class="about-text">
+          <p>I'm Galgalo Dulacha Dabaso, an enthusiastic first-year Information Technology student at Haramaya University, Ethiopia. I have a deep curiosity for how technology transforms communities. Growing up in Yabelo, I aim to combine my IT knowledge with real-world impact — from web development to database design. Currently, I'm sharpening my skills in front-end development, Python, and responsive design. My goal is to become a full-stack developer and tech advocate in the Horn of Africa.</p>
+        </div>
+        <div class="info-grid">
+          <div class="info-item"><i class="fas fa-map-marker-alt"></i> Yabelo, Oromia, Ethiopia</div>
+          <div class="info-item"><i class="fas fa-envelope"></i> galgalodulacha347@gmail.com</div>
+          <div class="info-item"><i class="fab fa-telegram"></i> @galgex200</div>
+          <div class="info-item"><i class="fas fa-phone-alt"></i> +251 900 488 358</div>
+          <div class="info-item"><i class="fas fa-university"></i> Haramaya University, IT (1st Year)</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills">
+    <div class="container">
+      <h2 class="section-title">Technical Skills</h2>
+      <div class="skills-wrapper">
+        <div class="skill-chip"><i class="fab fa-html5"></i> HTML5</div>
+        <div class="skill-chip"><i class="fab fa-css3-alt"></i> CSS3</div>
+        <div class="skill-chip"><i class="fab fa-js"></i> JavaScript</div>
+        <div class="skill-chip"><i class="fab fa-python"></i> Python</div>
+        <div class="skill-chip"><i class="fas fa-database"></i> SQL basics</div>
+        <div class="skill-chip"><i class="fab fa-git-alt"></i> Git & GitHub</div>
+        <div class="skill-chip"><i class="fas fa-mobile-alt"></i> Responsive Design</div>
+        <div class="skill-chip"><i class="fas fa-network-wired"></i> Networking basics</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section (Academic & personal) -->
+  <section id="projects">
+    <div class="container">
+      <h2 class="section-title">Featured Projects</h2>
+      <div class="projects-grid">
+        <div class="project-card">
+          <div class="project-icon"><i class="fas fa-globe"></i></div>
+          <div class="project-info">
+            <h3>Personal Portfolio Site</h3>
+            <p>Fully responsive portfolio website using HTML, CSS & JS. Showcases my resume, skills and contact info — live and interactive.</p>
+            <div class="project-tags"><span>HTML5</span><span>CSS3</span><span>Flex/Grid</span></div>
+          </div>
+        </div>
+        <div class="project-card">
+          <div class="project-icon"><i class="fas fa-cloud-sun"></i></div>
+          <div class="project-info">
+            <h3>Weather App (UI Concept)</h3>
+            <p>Designed a dynamic weather dashboard concept that fetches data using API (learning phase). Practiced asynchronous JS fundamentals.</p>
+            <div class="project-tags"><span>JavaScript</span><span>API</span><span>Responsive</span></div>
+          </div>
+        </div>
+        <div class="project-card">
+          <div class="project-icon"><i class="fas fa-chalkboard-user"></i></div>
+          <div class="project-info">
+            <h3>University Event Hub</h3>
+            <p>Group project for IT workshop: event listing platform for Haramaya campus clubs. Built interactive UI mockup with modern design.</p>
+            <div class="project-tags"><span>HTML/CSS</span><span>Teamwork</span><span>UI/UX</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact & Socials Section -->
+  <section id="contact">
+    <div class="container">
+      <div class="contact-flex">
+        <div class="contact-left">
+          <h3>Let's Connect</h3>
+          <p style="margin-bottom: 16px; color:#334155;">I'm open to collaborations, freelance projects, or tech discussions. Feel free to reach out!</p>
+          <div class="contact-details">
+            <div class="contact-item"><i class="fas fa-envelope"></i> galgalodulacha347@gmail.com</div>
+            <div class="contact-item"><i class="fab fa-telegram"></i> @galgex200</div>
+            <div class="contact-item"><i class="fas fa-phone-alt"></i> +251 900 488 358</div>
+            <div class="contact-item"><i class="fas fa-map-marker-alt"></i> Yabelo, Oromia, Ethiopia</div>
+          </div>
+          <div class="social-links">
+            <a href="https://t.me/galgex200" target="_blank"><i class="fab fa-telegram"></i></a>
+            <a href="mailto:galgalodulacha347@gmail.com"><i class="fas fa-envelope"></i></a>
+            <a href="#" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+        <div class="contact-right">
+          <h3 style="margin-bottom: 20px;">Send a message</h3>
+          <form id="contactForm">
+            <input type="text" placeholder="Your name" id="formName" required>
+            <input type="email" placeholder="Email address" id="formEmail" required>
+            <textarea rows="4" placeholder="Your message..." id="formMsg" required></textarea>
+            <button type="submit" class="btn" style="width: fit-content;"><i class="fas fa-paper-plane"></i> Send Message</button>
+            <div id="formFeedback" class="submit-msg"></div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    <p>© 2026 Galgalo Dulacha Dabaso — IT Student, Haramaya University. Built with <i class="fas fa-heart" style="color:#ef4444;"></i> from Yabelo, Ethiopia.</p>
+  </div>
+</footer>
+
+<script>
+  // Mobile menu toggle
+  const mobileBtn = document.getElementById('mobileMenuBtn');
+  const navLinks = document.getElementById('navLinks');
+  mobileBtn.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+  });
+  // close mobile menu after clicking a link
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+      navLinks.classList.remove('active');
+    });
+  });
+
+  // simple contact form handling (demo simulation)
+  const contactForm = document.getElementById('contactForm');
+  const feedbackDiv = document.getElementById('formFeedback');
+  contactForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const name = document.getElementById('formName').value.trim();
+    const email = document.getElementById('formEmail').value.trim();
+    const message = document.getElementById('formMsg').value.trim();
+    if(name && email && message) {
+      feedbackDiv.innerHTML = `<span style="color:#15803d;">✓ Thanks ${name}! I'll get back to you soon (demo reply).</span>`;
+      contactForm.reset();
+      setTimeout(() => {
+        feedbackDiv.innerHTML = '';
+      }, 4000);
+    } else {
+      feedbackDiv.innerHTML = `<span style="color:#dc2626;">Please fill all fields.</span>`;
+      setTimeout(() => {
+        feedbackDiv.innerHTML = '';
+      }, 3000);
+    }
+  });
+
+  // Smooth scroll for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const targetId = this.getAttribute('href');
+      if(targetId === "#" || targetId === "") return;
+      const targetElem = document.querySelector(targetId);
+      if(targetElem) {
+        e.preventDefault();
+        targetElem.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+</script>
+</body>
+</html>
