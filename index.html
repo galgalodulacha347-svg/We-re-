@@ -1,460 +1,171 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Galgalo Dulacha Dabaso | IT Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    body {
-      font-family: 'Inter', sans-serif;
-      background: #f8fafc;
-      color: #0f172a;
-      line-height: 1.5;
-      scroll-behavior: smooth;
-    }
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 24px;
-    }
-    header {
-      background: rgba(255,255,255,0.96);
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      border-bottom: 1px solid #eef2ff;
-    }
-    .nav-bar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 18px 0;
-    }
-    .logo {
-      font-size: 1.6rem;
-      font-weight: 800;
-      background: linear-gradient(135deg, #1e3c72, #2b4c7c);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-    .nav-links {
-      display: flex;
-      gap: 2rem;
-      list-style: none;
-    }
-    .nav-links a {
-      text-decoration: none;
-      font-weight: 600;
-      color: #1e293b;
-    }
-    .nav-links a:hover { color: #3b82f6; }
-    .mobile-menu {
-      display: none;
-      font-size: 1.6rem;
-      cursor: pointer;
-    }
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: #3b82f6;
-      color: white;
-      padding: 10px 24px;
-      border-radius: 40px;
-      font-weight: 600;
-      text-decoration: none;
-    }
-    .btn-outline {
-      background: transparent;
-      border: 2px solid #3b82f6;
-      color: #3b82f6;
-    }
-    .btn-outline:hover {
-      background: #3b82f6;
-      color: white;
-    }
-    .hero {
-      padding: 70px 0 60px;
-    }
-    .hero-grid {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 40px;
-    }
-    .hero-content { flex: 1; }
-    .hero-badge {
-      background: #e0f2fe;
-      color: #0369a1;
-      display: inline-block;
-      padding: 4px 12px;
-      border-radius: 30px;
-      font-size: 0.8rem;
-      font-weight: 600;
-      margin-bottom: 20px;
-    }
-    .hero-content h1 {
-      font-size: 3.2rem;
-      font-weight: 800;
-      margin-bottom: 20px;
-    }
-    .hero-content h1 span { color: #3b82f6; }
-    .hero-content p {
-      font-size: 1.1rem;
-      color: #334155;
-      margin-bottom: 28px;
-    }
-    .hero-buttons { display: flex; gap: 16px; flex-wrap: wrap; }
-    .hero-image {
-      flex: 0.8;
-      background: linear-gradient(145deg, #d9e6f7, #ffffff);
-      border-radius: 50% 30% 50% 30%;
-      padding: 20px;
-      text-align: center;
-    }
-    .hero-image i { font-size: 8rem; color: #2c5f8a; }
-    section { padding: 70px 0; }
-    .section-title {
-      font-size: 2rem;
-      font-weight: 700;
-      margin-bottom: 40px;
-      position: relative;
-      display: inline-block;
-    }
-    .section-title:after {
-      content: '';
-      position: absolute;
-      bottom: -12px;
-      left: 0;
-      width: 60px;
-      height: 4px;
-      background: #3b82f6;
-      border-radius: 4px;
-    }
-    .about-card {
-      background: white;
-      padding: 32px;
-      border-radius: 28px;
-      box-shadow: 0 12px 30px rgba(0,0,0,0.05);
-    }
-    .about-text {
-      font-size: 1.05rem;
-      color: #1e293b;
-      margin-bottom: 24px;
-      line-height: 1.6;
-    }
-    .info-grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 24px;
-      margin-top: 24px;
-    }
-    .info-item {
-      background: #f1f5f9;
-      padding: 10px 20px;
-      border-radius: 40px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    .info-item i { color: #3b82f6; }
-    .skills-wrapper {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 18px;
-      justify-content: center;
-    }
-    .skill-chip {
-      background: white;
-      padding: 12px 28px;
-      border-radius: 100px;
-      font-weight: 600;
-      border: 1px solid #e2e8f0;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .skill-chip i { color: #3b82f6; }
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 32px;
-    }
-    .project-card {
-      background: white;
-      border-radius: 28px;
-      overflow: hidden;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.05);
-    }
-    .project-icon {
-      background: #eef2ff;
-      padding: 28px 0;
-      text-align: center;
-      font-size: 2.5rem;
-      color: #2563eb;
-    }
-    .project-info { padding: 24px; }
-    .project-info h3 { margin-bottom: 12px; }
-    .project-info p { color: #475569; margin-bottom: 18px; }
-    .project-tags { display: flex; flex-wrap: wrap; gap: 8px; }
-    .project-tags span {
-      background: #f1f5f9;
-      padding: 4px 12px;
-      border-radius: 20px;
-      font-size: 0.7rem;
-      font-weight: 600;
-    }
-    .contact-flex {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 40px;
-      background: white;
-      border-radius: 36px;
-      padding: 40px;
-    }
-    .contact-left { flex: 1.2; }
-    .contact-item {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      margin-bottom: 20px;
-    }
-    .contact-item i { width: 32px; font-size: 1.4rem; color: #3b82f6; }
-    .social-links {
-      display: flex;
-      gap: 24px;
-      margin-top: 32px;
-    }
-    .social-links a {
-      background: #eef2ff;
-      width: 48px;
-      height: 48px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 50%;
-      color: #1e293b;
-      font-size: 1.5rem;
-      text-decoration: none;
-    }
-    .social-links a:hover { background: #3b82f6; color: white; }
-    .contact-right {
-      flex: 1;
-      background: #f8fafc;
-      border-radius: 28px;
-      padding: 28px;
-    }
-    .contact-right form {
-      display: flex;
-      flex-direction: column;
-      gap: 18px;
-    }
-    .contact-right input, .contact-right textarea {
-      padding: 14px 18px;
-      border: 1px solid #cbd5e1;
-      border-radius: 40px;
-      font-family: inherit;
-    }
-    footer {
-      background: #0f172a;
-      color: #cbd5e1;
-      text-align: center;
-      padding: 32px 0;
-      margin-top: 20px;
-    }
-    @media (max-width: 780px) {
-      .nav-links { display: none; }
-      .mobile-menu { display: block; }
-      .hero-content h1 { font-size: 2.4rem; }
-      .nav-links.active {
-        display: flex;
-        flex-direction: column;
-        position: absolute;
-        top: 70px;
-        left: 0;
-        width: 100%;
-        background: white;
-        padding: 28px;
-        gap: 1.8rem;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galgalo Dulacha Dabaso - IT Student Portfolio</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header>
-  <div class="container">
-    <div class="nav-bar">
-      <div class="logo">Galgalo.dev</div>
-      <div class="mobile-menu" id="mobileMenuBtn"><i class="fas fa-bars"></i></div>
-      <ul class="nav-links" id="navLinks">
-        <li><a href="#home">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </div>
-  </div>
-</header>
-
-<section id="home" class="hero">
-  <div class="container hero-grid">
-    <div class="hero-content">
-      <div class="hero-badge">🚀 First-year IT Student @ Haramaya University</div>
-      <h1>Galgalo Dulacha <span>Dabaso</span></h1>
-      <p>Passionate about building digital solutions, web technologies, and creative problem-solving. Based in Yabelo, Oromia, Ethiopia.</p>
-      <div class="hero-buttons">
-        <a href="#contact" class="btn"><i class="fas fa-paper-plane"></i> Hire Me</a>
-        <a href="#projects" class="btn btn-outline"><i class="fas fa-code-branch"></i> View Work</a>
-      </div>
-    </div>
-    <div class="hero-image"><i class="fas fa-laptop-code"></i></div>
-  </div>
-</section>
-
-<section id="about">
-  <div class="container">
-    <div class="about-card">
-      <h2 class="section-title">About Me</h2>
-      <div class="about-text">
-        <p>I'm Galgalo Dulacha Dabaso, an enthusiastic first-year Information Technology student at Haramaya University, Ethiopia. Growing up in Yabelo, I aim to combine my IT knowledge with real-world impact — from web development to database design. Currently, I'm sharpening my skills in front-end development, Python, and responsive design.</p>
-      </div>
-      <div class="info-grid">
-        <div class="info-item"><i class="fas fa-map-marker-alt"></i> Yabelo, Oromia, Ethiopia</div>
-        <div class="info-item"><i class="fas fa-envelope"></i> galgalodulacha347@gmail.com</div>
-        <div class="info-item"><i class="fab fa-telegram"></i> @galgex200</div>
-        <div class="info-item"><i class="fas fa-phone-alt"></i> +251 900 488 358</div>
-        <div class="info-item"><i class="fas fa-university"></i> Haramaya University, IT (1st Year)</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="skills">
-  <div class="container">
-    <h2 class="section-title">Technical Skills</h2>
-    <div class="skills-wrapper">
-      <div class="skill-chip"><i class="fab fa-html5"></i> HTML5</div>
-      <div class="skill-chip"><i class="fab fa-css3-alt"></i> CSS3</div>
-      <div class="skill-chip"><i class="fab fa-js"></i> JavaScript</div>
-      <div class="skill-chip"><i class="fab fa-python"></i> Python</div>
-      <div class="skill-chip"><i class="fas fa-database"></i> SQL basics</div>
-      <div class="skill-chip"><i class="fab fa-git-alt"></i> Git & GitHub</div>
-      <div class="skill-chip"><i class="fas fa-mobile-alt"></i> Responsive Design</div>
-    </div>
-  </div>
-</section>
-
-<section id="projects">
-  <div class="container">
-    <h2 class="section-title">Featured Projects</h2>
-    <div class="projects-grid">
-      <div class="project-card">
-        <div class="project-icon"><i class="fas fa-globe"></i></div>
-        <div class="project-info">
-          <h3>Personal Portfolio Site</h3>
-          <p>Fully responsive portfolio website using HTML, CSS & JS. Showcases my resume, skills and contact info.</p>
-          <div class="project-tags"><span>HTML5</span><span>CSS3</span><span>Flex/Grid</span></div>
+    <header>
+        <div class="container">
+            <div class="logo">Galgalo Dulacha</div>
+            <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+            <nav>
+                <ul id="navMenu">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
         </div>
-      </div>
-      <div class="project-card">
-        <div class="project-icon"><i class="fas fa-cloud-sun"></i></div>
-        <div class="project-info">
-          <h3>Weather App (UI Concept)</h3>
-          <p>Designed a dynamic weather dashboard concept learning asynchronous JS fundamentals.</p>
-          <div class="project-tags"><span>JavaScript</span><span>API</span></div>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="container">
+            <h1>Galgalo Dulacha Dabaso</h1>
+            <p class="tagline">First Year Information Technology Student | Haramaya University</p>
+            <p>Based in Yabelo, Oromia, Ethiopia</p>
+            <a href="#contact" class="btn">Get In Touch</a>
         </div>
-      </div>
-      <div class="project-card">
-        <div class="project-icon"><i class="fas fa-chalkboard-user"></i></div>
-        <div class="project-info">
-          <h3>University Event Hub</h3>
-          <p>Group project for IT workshop: event listing platform for Haramaya campus clubs.</p>
-          <div class="project-tags"><span>HTML/CSS</span><span>UI/UX</span></div>
+    </section>
+
+    <section id="about">
+        <div class="container">
+            <h2>About Me</h2>
+            <div class="about-content">
+                <p style="margin-bottom: 20px;">Hello! I'm Galgalo Dulacha Dabaso, a passionate first-year Information Technology student at Haramaya University, Ethiopia. I'm from Yabelo, Oromia, and I'm dedicated to learning and growing in the field of technology.</p>
+                <p style="margin-bottom: 20px;">As an aspiring IT professional, I'm building my skills in web development, programming, and problem-solving. I believe technology can transform communities, and I want to be part of that transformation in Ethiopia and beyond.</p>
+                
+                <div class="info-box">
+                    <div class="info-item"><strong>📍 Location:</strong> Yabelo, Oromia, Ethiopia</div>
+                    <div class="info-item"><strong>🎓 Education:</strong> BSc in IT (1st Year), Haramaya University</div>
+                    <div class="info-item"><strong>📧 Email:</strong> galgalodulacha347@gmail.com</div>
+                    <div class="info-item"><strong>📱 Phone:</strong> 0900488358</div>
+                    <div class="info-item"><strong>💬 Telegram:</strong> @galgex200</div>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<section id="contact">
-  <div class="container">
-    <div class="contact-flex">
-      <div class="contact-left">
-        <h3>Let's Connect</h3>
-        <p style="margin-bottom: 16px;">I'm open to collaborations, freelance projects, or tech discussions.</p>
-        <div class="contact-item"><i class="fas fa-envelope"></i> galgalodulacha347@gmail.com</div>
-        <div class="contact-item"><i class="fab fa-telegram"></i> @galgex200</div>
-        <div class="contact-item"><i class="fas fa-phone-alt"></i> +251 900 488 358</div>
-        <div class="contact-item"><i class="fas fa-map-marker-alt"></i> Yabelo, Oromia, Ethiopia</div>
-        <div class="social-links">
-          <a href="https://t.me/galgex200" target="_blank"><i class="fab fa-telegram"></i></a>
-          <a href="mailto:galgalodulacha347@gmail.com"><i class="fas fa-envelope"></i></a>
+    <section id="skills">
+        <div class="container">
+            <h2>Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <h3>HTML5 & CSS3</h3>
+                    <p>Responsive Web Design</p>
+                </div>
+                <div class="skill-card">
+                    <h3>JavaScript</h3>
+                    <p>Interactive Web Features</p>
+                </div>
+                <div class="skill-card">
+                    <h3>Python</h3>
+                    <p>Programming Fundamentals</p>
+                </div>
+                <div class="skill-card">
+                    <h3>SQL</h3>
+                    <p>Database Management</p>
+                </div>
+                <div class="skill-card">
+                    <h3>Git & GitHub</h3>
+                    <p>Version Control</p>
+                </div>
+                <div class="skill-card">
+                    <h3>Problem Solving</h3>
+                    <p>Analytical Thinking</p>
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="contact-right">
-        <h3 style="margin-bottom: 20px;">Send a message</h3>
-        <form id="contactForm">
-          <input type="text" placeholder="Your name" id="formName" required>
-          <input type="email" placeholder="Email address" id="formEmail" required>
-          <textarea rows="4" placeholder="Your message..." id="formMsg" required></textarea>
-          <button type="submit" class="btn"><i class="fas fa-paper-plane"></i> Send Message</button>
-          <div id="formFeedback"></div>
-        </form>
-      </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<footer>
-  <div class="container">
-    <p>© 2026 Galgalo Dulacha Dabaso — IT Student, Haramaya University. Built with <i class="fas fa-heart" style="color:#ef4444;"></i> from Yabelo, Ethiopia.</p>
-  </div>
-</footer>
+    <section id="projects">
+        <div class="container">
+            <h2>My Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <h3>Personal Portfolio Website</h3>
+                    <p>A fully responsive portfolio website showcasing my skills, projects, and contact information. Built with HTML5, CSS3, and JavaScript.</p>
+                    <div>
+                        <span class="tech-tag">HTML5</span>
+                        <span class="tech-tag">CSS3</span>
+                        <span class="tech-tag">JavaScript</span>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <h3>Student Management System</h3>
+                    <p>A database project for managing student records, courses, and grades. (Academic project)</p>
+                    <div>
+                        <span class="tech-tag">SQL</span>
+                        <span class="tech-tag">Python</span>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <h3>University Event Hub</h3>
+                    <p>A group project creating an event listing platform for Haramaya University campus activities and workshops.</p>
+                    <div>
+                        <span class="tech-tag">HTML/CSS</span>
+                        <span class="tech-tag">Team Project</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<script>
-  const mobileBtn = document.getElementById('mobileMenuBtn');
-  const navLinksEl = document.getElementById('navLinks');
-  mobileBtn.addEventListener('click', () => navLinksEl.classList.toggle('active'));
-  document.querySelectorAll('.nav-links a').forEach(link => {
-    link.addEventListener('click', () => navLinksEl.classList.remove('active'));
-  });
+    <section id="contact">
+        <div class="container">
+            <h2>Contact Me</h2>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3 style="margin-bottom: 20px; color: #3498db;">Get In Touch</h3>
+                    <div class="contact-detail">
+                        <strong>📧 Email:</strong><br>
+                        galgalodulacha347@gmail.com
+                    </div>
+                    <div class="contact-detail">
+                        <strong>📱 Phone:</strong><br>
+                        0900488358
+                    </div>
+                    <div class="contact-detail">
+                        <strong>💬 Telegram:</strong><br>
+                        @galgex200
+                    </div>
+                    <div class="contact-detail">
+                        <strong>📍 Address:</strong><br>
+                        Yabelo, Oromia, Ethiopia
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <h3 style="margin-bottom: 20px; color: #3498db;">Send Me a Message</h3>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <input type="text" id="name" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="email" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea id="message" placeholder="Your Message" required></textarea>
+                        </div>
+                        <button type="submit">Send Message</button>
+                    </form>
+                    <p id="formMessage" style="margin-top: 15px; color: green;"></p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  document.getElementById('contactForm').addEventListener('submit', (e) => {
-    e.preventDefault();
-    const name = document.getElementById('formName').value.trim();
-    const email = document.getElementById('formEmail').value.trim();
-    const msg = document.getElementById('formMsg').value.trim();
-    const feedback = document.getElementById('formFeedback');
-    if(name && email && msg) {
-      feedback.innerHTML = '<span style="color:#15803d;">✓ Thanks! I\'ll get back to you soon.</span>';
-      document.getElementById('contactForm').reset();
-      setTimeout(() => feedback.innerHTML = '', 4000);
-    } else {
-      feedback.innerHTML = '<span style="color:#dc2626;">Please fill all fields.</span>';
-      setTimeout(() => feedback.innerHTML = '', 3000);
-    }
-  });
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Galgalo Dulacha Dabaso. All Rights Reserved.</p>
+            <p style="margin-top: 10px;">First Year IT Student | Haramaya University | Yabelo, Ethiopia</p>
+        </div>
+    </footer>
 
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-      const target = this.getAttribute('href');
-      if(target === "#") return;
-      const elem = document.querySelector(target);
-      if(elem) {
-        e.preventDefault();
-        elem.scrollIntoView({ behavior: 'smooth' });
-      }
-    });
-  });
-</script>
+    <script src="script.js"></script>
 </body>
-  </html>
+                          </html>
