@@ -1,0 +1,47 @@
+CREATE DATABASE StudentDormitory;
+USE StudentDormitory;
+
+CREATE TABLE Students (
+    student_id INT PRIMARY KEY AUTO_INCREMENT,
+    full_name VARCHAR(100) NOT NULL,
+    gender VARCHAR(10),
+    department VARCHAR(100),
+    year_of_study INT,
+    phone VARCHAR(20)
+);
+
+CREATE TABLE Dormitories (
+    dorm_id INT PRIMARY KEY AUTO_INCREMENT,
+    dorm_name VARCHAR(100) NOT NULL,
+    location VARCHAR(100)
+);
+
+CREATE TABLE Rooms (
+    room_id INT PRIMARY KEY AUTO_INCREMENT,
+    dorm_id INT NOT NULL,
+    room_number VARCHAR(20) NOT NULL,
+    capacity INT NOT NULL,
+    FOREIGN KEY (dorm_id)
+        REFERENCES Dormitories(dorm_id)
+);
+
+CREATE TABLE Assignments (
+    assignment_id INT PRIMARY KEY AUTO_INCREMENT,
+    student_id INT NOT NULL,
+    room_id INT NOT NULL,
+    assigned_date DATE NOT NULL,
+    FOREIGN KEY (student_id)
+        REFERENCES Students(student_id),
+    FOREIGN KEY (room_id)
+        REFERENCES Rooms(room_id)
+);
+
+CREATE TABLE Payments (
+    payment_id INT PRIMARY KEY AUTO_INCREMENT,
+    student_id INT NOT NULL,
+    amount DECIMAL(10,2) NOT NULL,
+    payment_date DATE,
+    status VARCHAR(20),
+    FOREIGN KEY (student_id)
+        REFERENCES Students(student_id)
+);
